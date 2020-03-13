@@ -1,0 +1,74 @@
+#include <iostream>
+#include <stdio.h>
+#include <windows.h>
+#include <math.h> 
+#include <allegro5/allegro_image.h>
+#include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro.h>
+using namespace std;
+
+int main() {
+	srand(time(NULL));
+
+	const int WIDTH = 1000;
+	const int HEIGHT = 1000;
+
+	ALLEGRO_DISPLAY* display = NULL;
+
+	al_init();
+	al_init_primitives_addon();
+	//set up allegro stuff
+	display = al_create_display(WIDTH, HEIGHT);
+
+	double x = 128;
+	double y = 88;
+
+		for (double f = 0; f <= 5000; f+=.1) {
+		x = x + cos(f * f)*25;
+		y = y + sin(f * f)*25;
+		 al_draw_filled_circle( x,  y, 1, al_map_rgb(rand()%254, rand() % 254, rand() % 254)); //al_draw_filled_cricle
+
+			al_flip_display();
+			
+ 	}
+
+
+}
+
+//
+//void Var::setup() { // 'setup' is called just once, when the program is run.
+//	int width = 300;
+//	int height = 300;
+//	ALLEGRO_DISPLAY* al_create_display(int width, int height); // Tell Processing how big a window it should use.
+//}
+//
+//int main() {
+//	class Var {
+//	public:
+//		float x, y, seed = 2.82, f; // Each seed value gives a different fractal.
+//		double df = 0, ddf = 3.14 * seed, dddf = 0.0000001; // dddf controls how much the fractal changes with each frame.
+//		int i = 0;
+//		int width = 0;
+//		int height = 0;
+//
+//	private:
+//		void draw();
+//		void setup();
+//	};
+//}
+//
+//
+//	void Var ::draw() { // 'draw' is called every time the program draws a frame.
+//	  // We need to reset most of the variables every frame.
+//
+//		x = width / 2;
+//		y = height / 2;
+//		int x2 = width / 3;
+//		int y2 = height / 3;
+//		int c = 0;
+//
+//		al_draw_ellipse(x + 385.56 * sin(ddf * 385.56), y + 385.56 * cos(ddf * 385.56), 64, 64, al_map_rgb(100, 100, 100), 1);
+//
+//		ddf += dddf; // So ddf changes every frame, causing animation to happen.
+//	}
+//
